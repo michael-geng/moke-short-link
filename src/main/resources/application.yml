@@ -1,0 +1,8 @@
+spring:
+    profiles.active: dev
+    application.name: moke-short-link
+
+vertx.worker.pool.size: 60
+vertx.springWorker.instances: 30
+
+

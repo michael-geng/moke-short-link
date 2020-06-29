@@ -1,0 +1,13 @@
+
+mysql:
+  host: localhost
+  port: 3307
+  database: test
+  user: root
+  password: root
+  max-size: 10
+
+short-link-domain: https://t.cn/
+
+
+

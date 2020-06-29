@@ -1,0 +1,14 @@
+= Cheatsheets
+
+[[ShortLinkForm]]
+== ShortLinkForm
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[expired]]`@expired`|`String`|-
+|[[url]]`@url`|`String`|-
+|===
+
