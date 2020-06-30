@@ -80,21 +80,22 @@ public class ShortLinkBloomFilter {
 
                         stream.exceptionHandler(err -> {
                             System.out.println("stream取数据 Error: " + err.getMessage());
+                            pq.close();
                         });
                         stream.endHandler(v -> {
                             isError.set(false);
+                            pq.close();
                             promise.complete();
                         });
                         stream.handler(row -> {
                             maxId = row.getInteger("id");
-                            //System.out.println("读取到的数据"+ maxId);
                             bloomFilter.put(row.getString("hash"));
                         });
                     }else{
                         logger.error("bloomfilter数据加载错误：{}", ar1.cause());
                     }
+                    conn.close();
                 });
-                conn.close();
             });
 
             promise.future().onComplete(res->{
