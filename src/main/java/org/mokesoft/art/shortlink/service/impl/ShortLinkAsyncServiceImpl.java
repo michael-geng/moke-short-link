@@ -17,6 +17,7 @@ import io.vertx.sqlclient.RowSet;
 import io.vertx.sqlclient.SqlConnection;
 import io.vertx.sqlclient.Tuple;
 import org.apache.commons.lang3.StringUtils;
+import org.mokesoft.art.shortlink.util.HashValueUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,6 +151,6 @@ public class ShortLinkAsyncServiceImpl implements ShortLinkAsyncService {
     }
 
     private String hash(String value){
-        return Hashing.murmur3_32().hashString(value, StandardCharsets.UTF_8).toString();
+        return HashValueUtils._10_to_62(Hashing.murmur3_32().hashString(value, StandardCharsets.UTF_8).asInt());
     }
 }

@@ -56,7 +56,8 @@ public class ServerApplication {
         //多线程时使用该类可以提供原子性操作
         AtomicBoolean failed = new AtomicBoolean(false);
         String restApiVerticleName = verticleFactory.prefix() + ":" + RestApi.class.getName();
-        vertx.deployVerticle(restApiVerticleName, ar -> {
+        DeploymentOptions deploymentOptions = new DeploymentOptions().setInstances(8);
+        vertx.deployVerticle(restApiVerticleName, deploymentOptions, ar -> {
             if (ar.failed()) {
                 logger.error("Failed to deploy api verticle", ar.cause());
                 failed.compareAndSet(false, true);

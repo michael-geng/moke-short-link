@@ -81,13 +81,11 @@ public class ShortLinkBloomFilter {
                         stream.exceptionHandler(err -> {
                             System.out.println("stream取数据 Error: " + err.getMessage());
                             pq.close();
-                        });
-                        stream.endHandler(v -> {
+                        }).endHandler(v -> {
                             isError.set(false);
                             pq.close();
                             promise.complete();
-                        });
-                        stream.handler(row -> {
+                        }).handler(row -> {
                             maxId = row.getInteger("id");
                             bloomFilter.put(row.getString("hash"));
                         });
